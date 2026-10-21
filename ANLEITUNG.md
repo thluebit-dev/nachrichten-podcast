@@ -21,13 +21,14 @@ node nachrichten_holen.mjs arbeit/lage.md 30
 
 Dann `arbeit/lage.md` lesen. Die Datei enthält Titel, kurze Anrisstexte und Uhrzeiten aus
 RSS-Feeds (Schöppingen, Kreis Borken, Polizei Borken, Kreis Steinfurt, Polizei Steinfurt,
-tagesschau Inland/Ausland, Deutschlandfunk).
+tagesschau Inland/Ausland, Deutschlandfunk) und am Ende die Wettervorhersage für heute und
+morgen an sieben Orten in NRW.
 
 ## Schritt 3 – Sprechtext schreiben
 
 Schreibe `arbeit/skript.txt` (UTF-8, reiner Text, KEINE Überschriften, kein Markdown, keine
 Aufzählungszeichen, keine URLs). Absätze durch eine Leerzeile trennen.
-Länge: ca. 1.250–1.350 Wörter (= ca. 10 Minuten).
+Länge: ca. 1.350–1.450 Wörter (= ca. 11 Minuten), davon ca. 120–150 Wörter Wetter.
 
 Aufbau:
 1. Begrüßung mit Wochentag und Datum („Guten Morgen! Heute ist …“), ein Satz zum Ablauf.
@@ -38,7 +39,14 @@ Aufbau:
 3. Überleitung „Damit nach Deutschland.“ – 5 bis 7 wichtigste Themen.
 4. Überleitung „Damit zu den Nachrichten aus der Welt.“ – 5 bis 7 wichtigste Themen, am Ende
    ggf. „Noch einige Meldungen in Kürze“.
-5. Kurzer Abschluss mit Datum und „bis morgen!“.
+5. Überleitung „Und zum Schluss das Wetter in Nordrhein-Westfalen.“ – zusammenhängend
+   formuliert, keine Liste von Orten: zuerst heute (Wetterlage, Temperaturspanne, Regen, Wind),
+   dabei Schöppingen und das Münsterland nennen und auffällige Unterschiede im Land erwähnen
+   (z. B. kühler im Sauerland, mehr Regen in Ostwestfalen). Dann kurz morgen. Auf Auffälliges
+   hinweisen: Sturmböen ab etwa 60 km/h, Frost, Glätte, Gewitter, Starkregen. Temperaturen als
+   ganze Zahlen („zwischen 7 und 14 Grad“), keine Millimeter- oder Prozentkolonnen vorlesen.
+   Sind die Wetterdaten nicht erreichbar, den Wetterteil weglassen.
+6. Kurzer Abschluss mit Datum und „bis morgen!“.
 
 Regeln:
 - Nur Fakten verwenden, die in `arbeit/lage.md` stehen. Nichts erfinden oder ausschmücken (keine

@@ -104,6 +104,44 @@ for (const feed of FEEDS) {
   }
 }
 
+// Wetter für NRW: Vorhersage heute und morgen für einige Orte (Open-Meteo, ohne Schlüssel)
+const ORTE = [
+  ["Schöppingen", 52.10, 7.23], ["Münster", 51.96, 7.63], ["Bielefeld", 52.02, 8.53],
+  ["Dortmund", 51.51, 7.47], ["Düsseldorf", 51.23, 6.78], ["Köln", 50.94, 6.96],
+  ["Winterberg (Sauerland)", 51.19, 8.53],
+];
+const WETTERLAGE = {
+  0: "klar", 1: "überwiegend klar", 2: "teils bewölkt", 3: "bedeckt", 45: "Nebel", 48: "Nebel mit Reif",
+  51: "leichter Nieselregen", 53: "Nieselregen", 55: "starker Nieselregen", 56: "gefrierender Nieselregen",
+  57: "starker gefrierender Nieselregen", 61: "leichter Regen", 63: "Regen", 65: "starker Regen",
+  66: "gefrierender Regen", 67: "starker gefrierender Regen", 71: "leichter Schneefall", 73: "Schneefall",
+  75: "starker Schneefall", 77: "Schneegriesel", 80: "leichte Regenschauer", 81: "Regenschauer",
+  82: "heftige Regenschauer", 85: "Schneeschauer", 86: "starke Schneeschauer", 95: "Gewitter",
+  96: "Gewitter mit Hagel", 99: "schweres Gewitter mit Hagel",
+};
+
+md += "\n## Wetter NRW – Vorhersage (Open-Meteo)\n";
+try {
+  const felder = "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max," +
+    "precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,sunshine_duration";
+  const url = "https://api.open-meteo.com/v1/forecast" +
+    `?latitude=${ORTE.map((o) => o[1]).join(",")}&longitude=${ORTE.map((o) => o[2]).join(",")}` +
+    `&daily=${felder}&timezone=Europe%2FBerlin&forecast_days=2`;
+  const daten = JSON.parse(await ladeText(url));
+  ORTE.forEach(([name], i) => {
+    const d = daten[i].daily;
+    const tage = d.time.map((tag, t) =>
+      `${t === 0 ? "heute" : "morgen"}: ${WETTERLAGE[d.weather_code[t]] ?? `Code ${d.weather_code[t]}`}, ` +
+      `${Math.round(d.temperature_2m_min[t])} bis ${Math.round(d.temperature_2m_max[t])} Grad, ` +
+      `Regenrisiko ${d.precipitation_probability_max[t]} % (${d.precipitation_sum[t]} mm), ` +
+      `Wind bis ${Math.round(d.wind_speed_10m_max[t])} km/h, Böen bis ${Math.round(d.wind_gusts_10m_max[t])} km/h, ` +
+      `Sonne ${(d.sunshine_duration[t] / 3600).toFixed(1)} h`);
+    md += `- ${name} — ${tage.join(" | ")}\n`;
+  });
+} catch (fehler) {
+  md += `- (Wetterdaten nicht erreichbar: ${fehler.message})\n`;
+}
+
 await mkdir(dirname(ausgabe), { recursive: true });
 await writeFile(ausgabe, md, "utf8");
 console.log(`Gespeichert: ${ausgabe} (${md.length} Zeichen)`);

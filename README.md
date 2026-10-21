@@ -9,7 +9,7 @@ eine Folge nach [ANLEITUNG.md](ANLEITUNG.md) und veröffentlicht sie auf GitHub 
 
 | Datei | Zweck |
 |---|---|
-| `nachrichten_holen.mjs` | Schlagzeilen aus RSS-Feeds holen |
+| `nachrichten_holen.mjs` | Schlagzeilen aus RSS-Feeds und Wetter für NRW (Open-Meteo) holen |
 | `vertonen.mjs` | Sprechtext mit Microsoft-Neural-Stimme als MP3 vertonen |
 | `seite_bauen.mjs` | Startseite und Podcast-Feed bauen (behält die letzten 14 Folgen) |
 | `veroeffentlichen.sh` | Homepage in den Zweig `gh-pages` schreiben |
