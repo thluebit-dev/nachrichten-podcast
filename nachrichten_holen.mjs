@@ -5,6 +5,10 @@
 
 import { writeFile, mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+
+const execFileAsync = promisify(execFile);
 
 const gn = (q) => `https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:2d")}&hl=de&gl=DE&ceid=DE:de`;
 
@@ -41,10 +45,29 @@ function bereinige(s = "") {
 
 const feld = (item, tag) => (item.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`)) || [])[1];
 
+// Manche Seiten (z. B. tagesschau, Deutschlandfunk) lehnen Anfragen von Node.js aus
+// Rechenzentren mit HTTP 403 ab, lassen curl aber durch – daher curl als Ausweichweg.
+async function ladeText(url) {
+  let grund;
+  try {
+    const antwort = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+    if (antwort.ok) return await antwort.text();
+    grund = `HTTP ${antwort.status}`;
+  } catch (fehler) {
+    grund = fehler.message;
+  }
+  try {
+    const { stdout } = await execFileAsync(
+      "curl", ["-sSfL", "--max-time", "20", "-A", "Mozilla/5.0", url],
+      { maxBuffer: 20 * 1024 * 1024 });
+    return stdout;
+  } catch (fehler) {
+    throw new Error(`${grund}; curl: ${fehler.stderr?.trim() || fehler.message}`);
+  }
+}
+
 async function holeFeed({ name, url, max }) {
-  const antwort = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
-  if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
-  const xml = await antwort.text();
+  const xml = await ladeText(url);
   const items = xml.match(/<item[\s>][\s\S]*?<\/item>/g) || [];
   return items
     .map((it) => {
