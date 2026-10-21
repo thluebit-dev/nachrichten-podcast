@@ -1,0 +1,9 @@
+{
+  "name": "nachrichten-podcast",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Täglicher Nachrichten-Podcast für Schöppingen, Kreis Borken, Kreis Steinfurt, Deutschland und die Welt",
+  "dependencies": {
+    "msedge-tts": "^2.1.0"
+  }
+}
