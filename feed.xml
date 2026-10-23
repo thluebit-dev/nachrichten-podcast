@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guten Morgen, Münsterland</title>
+    <link>https://thluebit-dev.github.io/nachrichten-podcast/</link>
+    <atom:link href="https://thluebit-dev.github.io/nachrichten-podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Täglich ca. 10 Minuten: Schöppingen, Kreis Borken, Kreis Steinfurt, Deutschland und die Welt</description>
+    <language>de-de</language>
+    <itunes:author>Privater Nachrichten-Podcast</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:block>Yes</itunes:block>
+    <itunes:category text="News"/>
+    <item>
+      <title>Nachrichten vom Freitag, 23. Oktober 2026</title>
+      <description>Schöppingen: neuer Gemeinderat Feldhaus, Länder fordern Energie-Entlastungen, Erdbeben in Tibet, Kiew erneut angegriffen</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-23.mp3" length="4010544" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-23</guid>
+      <pubDate>Fri, 23 Oct 2026 05:18:10 GMT</pubDate>
+      <itunes:duration>11:08</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Donnerstag, 22. Oktober 2026</title>
+      <description>Schöppingen: Unfall auf Landesstraße, Tabaksteuer-Panne, Ukraine-Gespräche, Meta-Strafe</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-22.mp3" length="3828384" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:18:10 GMT</pubDate>
+      <itunes:duration>10:38</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Mittwoch, 21. Oktober 2026</title>
+      <description>Schöppingen: Kneipennacht, Schüsse in Gronau, Tabaksteuer-Panne, Ukraine-Gespräche in Sankt Petersburg</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-21.mp3" length="3700224" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-21</guid>
+      <pubDate>Wed, 21 Oct 2026 08:48:52 GMT</pubDate>
+      <itunes:duration>10:17</itunes:duration>
+    </item>
+  </channel>
+</rss>
