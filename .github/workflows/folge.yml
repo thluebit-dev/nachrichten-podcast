@@ -1,6 +1,7 @@
-# Vertont einen neu eingereichten Sprechtext und stellt die Folge auf die Homepage.
+# Vertont neu eingereichte Sprechtexte und stellt die Folgen auf die Homepage.
 # Auslöser: ein neuer Sprechtext unter skripte/ (von der Claude-Routine gepusht)
-# oder von Hand über „Run workflow“ mit einem Datum.
+# oder von Hand über „Run workflow“. Jeder Lauf holt alle ausstehenden Folgen der
+# letzten 14 Tage nach, damit auch übersprungene oder abgebrochene Läufe aufgeholt werden.
 name: Folge vertonen und veröffentlichen
 
 on:
@@ -8,10 +9,6 @@ on:
     branches: [main]
     paths: ["skripte/*.txt"]
   workflow_dispatch:
-    inputs:
-      datum:
-        description: "Datum der Folge (JJJJ-MM-TT), leer = neuester Sprechtext"
-        required: false
 
 permissions:
   contents: write
@@ -23,9 +20,11 @@ concurrency:
 jobs:
   folge:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -34,28 +33,30 @@ jobs:
 
       - run: npm ci
 
-      - name: Datum bestimmen
-        id: datum
+      - name: Ausstehende Folgen bestimmen
+        id: offen
         run: |
-          D="${{ github.event.inputs.datum }}"
-          if [ -z "$D" ]; then
-            D=$(ls skripte/ | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}\.txt$' | sort | tail -1 | cut -c1-10)
+          if git fetch --depth=1 origin gh-pages; then
+            git show FETCH_HEAD:folgen.json > /tmp/folgen.json || echo "[]" > /tmp/folgen.json
+          else
+            echo "[]" > /tmp/folgen.json
           fi
-          test -f "skripte/$D.txt" || { echo "Kein Sprechtext skripte/$D.txt"; exit 1; }
-          echo "datum=$D" >> "$GITHUB_OUTPUT"
-          echo "Folge vom $D"
+          DATEN=$(node ausstehende_folgen.mjs /tmp/folgen.json | tr '\n' ' ')
+          echo "daten=$DATEN" >> "$GITHUB_OUTPUT"
+          echo "Ausstehend: ${DATEN:-keine}"
 
-      - name: Vertonen (bis zu 3 Versuche)
+      - name: Vertonen und veröffentlichen
+        if: steps.offen.outputs.daten != ''
         run: |
-          D="${{ steps.datum.outputs.datum }}"
-          for versuch in 1 2 3; do
-            node vertonen.mjs "skripte/$D.txt" folge.mp3 && exit 0
-            echo "Versuch $versuch fehlgeschlagen, neuer Versuch in 30 s"
-            sleep 30
+          for D in ${{ steps.offen.outputs.daten }}; do
+            echo "::group::Folge vom $D"
+            ok=0
+            for versuch in 1 2 3; do
+              if node vertonen.mjs "skripte/$D.txt" "folge-$D.mp3"; then ok=1; break; fi
+              echo "Vertonen, Versuch $versuch fehlgeschlagen – neuer Versuch in 30 s"
+              sleep 30
+            done
+            [ "$ok" = 1 ] || { echo "::error::Folge vom $D konnte nicht vertont werden"; exit 1; }
+            bash seite_aktualisieren.sh "folge-$D.mp3" "$D" "skripte/$D.beschreibung.txt"
+            echo "::endgroup::"
           done
-          exit 1
-
-      - name: Homepage aktualisieren
-        run: |
-          D="${{ steps.datum.outputs.datum }}"
-          bash seite_aktualisieren.sh folge.mp3 "$D" "skripte/$D.beschreibung.txt"
