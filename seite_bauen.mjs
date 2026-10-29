@@ -55,7 +55,7 @@ const items = folgen.map((f) => `    <item>
       <description>${esc(f.beschreibung || "Ihr täglicher Nachrichtenüberblick.")}</description>
       <enclosure url="${BASIS_URL}folgen/${f.datei}" length="${f.bytes}" type="audio/mpeg"/>
       <guid isPermaLink="false">nachrichten-${f.datum}</guid>
-      <pubDate>${new Date(f.erstellt).toUTCString()}</pubDate>
+      <pubDate>${new Date(Math.min(new Date(f.erstellt), new Date(`${f.datum}T05:30:00Z`))).toUTCString()}</pubDate>
       <itunes:duration>${dauer(f.bytes)}</itunes:duration>
     </item>`).join("\n");
 
