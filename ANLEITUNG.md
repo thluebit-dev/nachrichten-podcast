@@ -66,25 +66,18 @@ Schreibe außerdem `arbeit/beschreibung.txt`: eine Zeile mit den 3–4 wichtigst
 Kommas getrennt (z. B. „Schöppingen: neue Rettungswache, Schüsse in Gronau, Tabaksteuer-Panne,
 Ukraine-Gespräche“).
 
-## Schritt 4 – Vertonen
+## Schritt 4 – Einreichen
 
 ```bash
-node vertonen.mjs arbeit/skript.txt arbeit/folge.mp3
+bash veroeffentlichen.sh arbeit/skript.txt "$DATUM" arbeit/beschreibung.txt
 ```
 
-Dauert 1–3 Minuten. Schlägt es fehl, einmal erneut ausführen.
+Das legt den Sprechtext unter `skripte/` ab und pusht ihn nach `main`. Vertonen und Homepage
+übernimmt danach automatisch GitHub Actions – NICHT selbst vertonen (`vertonen.mjs` funktioniert
+in dieser Cloud-Umgebung nicht zuverlässig) und nicht darauf warten. Sonst nichts committen oder
+pushen. Der Ordner `arbeit/` ist in `.gitignore` und bleibt lokal.
 
-## Schritt 5 – Veröffentlichen
+## Schritt 5 – Rückmeldung
 
-```bash
-bash veroeffentlichen.sh arbeit/folge.mp3 "$DATUM" arbeit/beschreibung.txt
-```
-
-Das baut die Homepage neu und schreibt den Zweig `gh-pages`. Den Zweig `main` NICHT ändern:
-nichts committen, nichts pushen außer über dieses Skript. Der Ordner `arbeit/` ist in
-`.gitignore` und bleibt lokal.
-
-## Schritt 6 – Rückmeldung
-
-Antworte am Ende in 2–4 Zeilen auf Deutsch: ob die Folge veröffentlicht ist, Länge in Minuten,
+Antworte am Ende in 2–4 Zeilen auf Deutsch: ob der Sprechtext eingereicht ist, Wortzahl,
 die 3 Top-Themen. Bei Fehlern: was nicht geklappt hat (z. B. welcher Feed nicht erreichbar war).
