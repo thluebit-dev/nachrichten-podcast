@@ -1,7 +1,8 @@
 # Nachrichten-Podcast
 
-Privater, täglicher Nachrichten-Podcast (ca. 10 Minuten): Schöppingen, Kreis Borken,
-Kreis Steinfurt, Deutschland, die Welt und das Wetter in NRW.
+Privater, täglicher Nachrichten-Podcast (ca. 11 Minuten) in dieser Reihenfolge: Schöppingen,
+Nachbarorte (Heek/Nienborg, Asbeck/Legden, am Rande Metelen/Horstmar), Kreis Borken, NRW,
+Deutschland, Europa, Welt und das Wetter in NRW.
 
 - Homepage: https://thluebit-dev.github.io/nachrichten-podcast/
 - Podcast-Feed: https://thluebit-dev.github.io/nachrichten-podcast/feed.xml
@@ -24,6 +25,7 @@ Kreis Steinfurt, Deutschland, die Welt und das Wetter in NRW.
 | `seite_bauen.mjs` | Startseite und Podcast-Feed bauen |
 | `seite_aktualisieren.sh` | Homepage in den Zweig `gh-pages` schreiben (GitHub Actions) |
 
-Die Sprechtexte sind eigene Zusammenfassungen; die Quellen sind tagesschau, Deutschlandfunk,
-Google News (regionale Medien), die Pressemeldungen der Polizei Borken und Steinfurt sowie
+Die Sprechtexte sind eigene Zusammenfassungen; die Quellen sind Westfälische Nachrichten
+(Ortsseite Schöppingen), Radio WMW und weitere regionale Medien über Google News, die
+Pressemeldungen der Polizei Borken und Steinfurt, WDR, tagesschau, Deutschlandfunk sowie
 Open-Meteo für das Wetter.

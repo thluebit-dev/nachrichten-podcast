@@ -10,25 +10,42 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
-const gn = (q) => `https://news.google.com/rss/search?q=${encodeURIComponent(q + " when:2d")}&hl=de&gl=DE&ceid=DE:de`;
+const gn = (q, tage = 2) => `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:${tage}d`)}&hl=de&gl=DE&ceid=DE:de`;
 
+// Reihenfolge = Reihenfolge im Podcast. „filter“ lässt nur Meldungen durch, deren Titel oder
+// Anrisstext passt (für Polizeiberichte, die den ganzen Kreis abdecken). „stunden“ erweitert
+// den Zeitraum für Rubriken mit wenigen Meldungen.
+const ORT = /Schöppingen|Eggerode/i;
+const NACHBARN = /Heek|Nienborg|Asbeck|Legden/i;
 const FEEDS = [
-  { rubrik: "Region", name: "Google News: Schöppingen", url: gn("Schöppingen"), max: 15 },
-  { rubrik: "Region", name: "Google News: Kreis Borken", url: gn('"Kreis Borken" OR Ahaus OR Heek OR Gronau OR Stadtlohn'), max: 20 },
-  { rubrik: "Region", name: "Polizei Borken", url: "https://www.presseportal.de/rss/dienststelle_24843.rss2", max: 10 },
-  { rubrik: "Region", name: "Google News: Kreis Steinfurt", url: gn('"Kreis Steinfurt" OR Rheine OR Metelen OR Horstmar'), max: 15 },
-  { rubrik: "Region", name: "Polizei Steinfurt", url: "https://www.presseportal.de/rss/dienststelle_43526.rss2", max: 8 },
-  { rubrik: "Deutschland", name: "tagesschau Inland", url: "https://www.tagesschau.de/inland/index~rss2.xml", max: 20 },
-  { rubrik: "Welt", name: "tagesschau Ausland", url: "https://www.tagesschau.de/ausland/index~rss2.xml", max: 20 },
-  { rubrik: "Deutschland + Welt", name: "Deutschlandfunk Nachrichten", url: "https://www.deutschlandfunk.de/nachrichten-100.rss", max: 25 },
+  { rubrik: "1 Ort", name: "Schöppingen (Google News)", url: gn("Schöppingen OR Eggerode", 3), max: 25, stunden: 72 },
+  { rubrik: "1 Ort", name: "Schöppingen (Westfälische Nachrichten)", typ: "wn",
+    url: "https://www.wn.de/muensterland/kreis-borken/schoeppingen", max: 8, stunden: 72 },
+  { rubrik: "1 Ort", name: "Polizei Borken", url: "https://www.presseportal.de/rss/dienststelle_24843.rss2", max: 10, filter: ORT, stunden: 72 },
+  { rubrik: "2 Nachbarorte", name: "Heek, Nienborg, Asbeck, Legden (Google News)", url: gn("Heek OR Nienborg OR Asbeck OR Legden"), max: 15, stunden: 48 },
+  { rubrik: "2 Nachbarorte", name: "Polizei Borken", url: "https://www.presseportal.de/rss/dienststelle_24843.rss2", max: 10, filter: NACHBARN, stunden: 48 },
+  { rubrik: "2 Nachbarorte (gering interessant)", name: "Metelen, Horstmar (Google News)", url: gn("Metelen OR Horstmar"), max: 6 },
+  { rubrik: "2 Nachbarorte (gering interessant)", name: "Polizei Steinfurt", url: "https://www.presseportal.de/rss/dienststelle_43526.rss2", max: 5, filter: /Metelen|Horstmar/i },
+  { rubrik: "3 Kreis Borken", name: "Kreis Borken (Google News)", url: gn('"Kreis Borken"'), max: 12 },
+  { rubrik: "3 Kreis Borken", name: "Radio WMW", url: gn("site:radiowmw.de"), max: 10,
+    filter: /Kreis Borken|Westmünsterland|Schöppingen|Eggerode|Heek|Nienborg|Legden|Asbeck|Ahaus|Borken|Gronau|Stadtlohn|Vreden|Bocholt|Gescher|Coesfeld/i },
+  { rubrik: "4 NRW", name: "WDR Nachrichten", url: "https://www1.wdr.de/nachrichten/uebersicht-nachrichten-100.feed", max: 20 },
+  { rubrik: "5 Deutschland", name: "tagesschau Inland", url: "https://www.tagesschau.de/inland/index~rss2.xml", max: 20 },
+  { rubrik: "6 Europa", name: "tagesschau Europa", url: "https://www.tagesschau.de/ausland/europa/index~rss2.xml", max: 12 },
+  { rubrik: "7 Welt", name: "tagesschau Ausland", url: "https://www.tagesschau.de/ausland/index~rss2.xml", max: 20 },
+  { rubrik: "5–7 Deutschland, Europa, Welt", name: "Deutschlandfunk Nachrichten", url: "https://www.deutschlandfunk.de/nachrichten-100.rss", max: 25 },
 ];
+
+// Offensichtlicher Ausschuss aus Google News
+const AUSSCHUSS = /Transfermarkt|ruhr-concept KG|Wochenrückblick/i;
 
 const [ausgabe, stundenArg] = process.argv.slice(2);
 if (!ausgabe) {
   console.error("Aufruf: node nachrichten_holen.mjs <ausgabe.md> [Stunden]");
   process.exit(1);
 }
-const grenze = Date.now() - Number(stundenArg || 30) * 3600 * 1000;
+const standardStunden = Number(stundenArg || 30);
+const grenzeFuer = (stunden) => Date.now() - Math.max(standardStunden, stunden || 0) * 3600 * 1000;
 
 const entities = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
 function bereinige(s = "") {
@@ -66,18 +83,49 @@ async function ladeText(url) {
   }
 }
 
-async function holeFeed({ name, url, max }) {
-  const xml = await ladeText(url);
-  const items = xml.match(/<item[\s>][\s\S]*?<\/item>/g) || [];
+// Feeds werden pro Adresse nur einmal geladen (Polizei Borken taucht in zwei Rubriken auf)
+const geladen = new Map();
+
+// Westfälische Nachrichten haben keinen Orts-Feed: Ortsseite lesen, die neuesten Artikel
+// (höchste Artikelnummer) einzeln öffnen und Datum, Überschrift und Kurztext übernehmen.
+async function holeWN({ url, max, stunden }) {
+  const grenze = grenzeFuer(stunden);
+  const pfad = new URL(url).pathname;
+  const seite = await ladeText(url);
+  const links = [...new Set(seite.match(new RegExp(`${pfad}/[a-z0-9-]+-\\d+`, "g")) || [])]
+    .sort((a, b) => Number(b.match(/(\d+)$/)[1]) - Number(a.match(/(\d+)$/)[1]))
+    .slice(0, max);
+  const meldungen = [];
+  for (const link of links) {
+    try {
+      const html = await ladeText(`https://www.wn.de${link}`);
+      const meta = (name) => bereinige((html.match(new RegExp(`<meta (?:name|property)="${name}" content="([^"]*)"`)) || [])[1]);
+      const zeit = (html.match(/fp-article-heading__date-published">[^,<]*,?\s*(\d{2})\.(\d{2})\.(\d{4}), (\d{2}):(\d{2})/) || []);
+      const datum = zeit.length ? new Date(`${zeit[3]}-${zeit[2]}-${zeit[1]}T${zeit[4]}:${zeit[5]}:00+01:00`) : new Date(NaN);
+      const titel = meta("og:title").replace(/\s*[|–-]\s*(WN|Westfälische Nachrichten)\s*$/, "");
+      if (titel) meldungen.push({ titel: `${titel} - Westfälische Nachrichten`, anriss: meta("description").slice(0, 300), datum });
+    } catch { /* einzelner Artikel nicht erreichbar – überspringen */ }
+  }
+  return meldungen.filter((m) => !isNaN(m.datum) && m.datum.getTime() >= grenze);
+}
+
+async function holeFeed({ url, max, filter, typ, stunden }) {
+  if (typ === "wn") return holeWN({ url, max, stunden });
+  const grenze = grenzeFuer(stunden);
+  if (!geladen.has(url)) geladen.set(url, ladeText(url));
+  const xml = await geladen.get(url);
+  // RSS (<item>) und Atom (<entry>, z. B. WDR)
+  const items = xml.match(/<(item|entry)[\s>][\s\S]*?<\/\1>/g) || [];
   return items
     .map((it) => {
-      const datum = new Date(feld(it, "pubDate") || feld(it, "dc:date") || 0);
-      let anriss = bereinige(feld(it, "description"));
+      const datum = new Date(feld(it, "pubDate") || feld(it, "dc:date") || feld(it, "updated") || feld(it, "published") || 0);
+      let anriss = bereinige(feld(it, "description") || feld(it, "summary") || feld(it, "content"));
       const titel = bereinige(feld(it, "title"));
       if (anriss.startsWith(titel.slice(0, 30))) anriss = ""; // Google News wiederholt nur den Titel
       return { titel, anriss: anriss.slice(0, 300), datum };
     })
-    .filter((m) => m.titel && (isNaN(m.datum) || m.datum.getTime() >= grenze))
+    .filter((m) => m.titel && !AUSSCHUSS.test(m.titel) && (isNaN(m.datum) || m.datum.getTime() >= grenze))
+    .filter((m) => !filter || filter.test(`${m.titel} ${m.anriss}`))
     .slice(0, max);
 }
 
@@ -120,7 +168,7 @@ const WETTERLAGE = {
   96: "Gewitter mit Hagel", 99: "schweres Gewitter mit Hagel",
 };
 
-md += "\n## Wetter NRW – Vorhersage (Open-Meteo)\n";
+md += "\n## 8 Wetter NRW – Vorhersage (Open-Meteo)\n";
 try {
   const felder = "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max," +
     "precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,sunshine_duration";

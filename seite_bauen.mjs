@@ -9,7 +9,7 @@ import { join, basename } from "node:path";
 
 const BASIS_URL = "https://thluebit-dev.github.io/nachrichten-podcast/";
 const TITEL = "Guten Morgen, Münsterland";
-const UNTERTITEL = "Täglich ca. 10 Minuten: Schöppingen, Kreis Borken, Kreis Steinfurt, Deutschland und die Welt";
+const UNTERTITEL = "Täglich ca. 11 Minuten: Schöppingen, Nachbarorte, Kreis Borken, NRW, Deutschland, Europa, Welt und das Wetter";
 const ANZAHL_BEHALTEN = 14;
 const BYTES_PRO_SEKUNDE = 6000; // 48 kbit/s MP3
 

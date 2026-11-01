@@ -19,10 +19,19 @@ mkdir -p arbeit
 node nachrichten_holen.mjs arbeit/lage.md 30
 ```
 
-Dann `arbeit/lage.md` lesen. Die Datei enthält Titel, kurze Anrisstexte und Uhrzeiten aus
-RSS-Feeds (Schöppingen, Kreis Borken, Polizei Borken, Kreis Steinfurt, Polizei Steinfurt,
-tagesschau Inland/Ausland, Deutschlandfunk) und am Ende die Wettervorhersage für heute und
-morgen an sieben Orten in NRW.
+Dann `arbeit/lage.md` lesen. Die Datei ist nach den Teilen des Podcasts gegliedert
+(Überschriften mit Nummer 1–8): Schöppingen, Nachbarorte, Kreis Borken, NRW (WDR),
+Deutschland, Europa, Welt (tagesschau, Deutschlandfunk) und am Ende die Wettervorhersage für
+heute und morgen an sieben Orten in NRW.
+
+Lies außerdem den Sprechtext von gestern, falls vorhanden:
+
+```bash
+cat skripte/$(TZ=Europe/Berlin date -d yesterday +%F).txt 2>/dev/null | head -c 12000
+```
+
+Themen, die gestern schon vorkamen, nicht noch einmal erzählen – außer es gibt eine echte
+Neuigkeit dazu (dann nur das Neue, mit einem Halbsatz Erinnerung).
 
 ## Schritt 3 – Sprechtext schreiben
 
@@ -30,23 +39,34 @@ Schreibe `arbeit/skript.txt` (UTF-8, reiner Text, KEINE Überschriften, kein Mar
 Aufzählungszeichen, keine URLs). Absätze durch eine Leerzeile trennen.
 Länge: ca. 1.350–1.450 Wörter (= ca. 11 Minuten), davon ca. 120–150 Wörter Wetter.
 
-Aufbau:
+Aufbau – genau in dieser Reihenfolge:
 1. Begrüßung mit Wochentag und Datum („Guten Morgen! Heute ist …“), ein Satz zum Ablauf.
-2. Region (ca. 40 %): zuerst Schöppingen (Wohnort des Hörers), dann Kreis Borken (Ahaus, Heek,
-   Gronau, Stadtlohn, Borken …), dann kurz Kreis Steinfurt (Rheine, Metelen, Horstmar …).
-   Gibt es zu Schöppingen nichts Neues, mit Kreis Borken beginnen. Polizeimeldungen bündeln und
-   kurz halten, schwere Unfälle/Todesfälle sachlich und respektvoll.
-3. Überleitung „Damit nach Deutschland.“ – 5 bis 7 wichtigste Themen.
-4. Überleitung „Damit zu den Nachrichten aus der Welt.“ – 5 bis 7 wichtigste Themen, am Ende
-   ggf. „Noch einige Meldungen in Kürze“.
-5. Überleitung „Und zum Schluss das Wetter in Nordrhein-Westfalen.“ – zusammenhängend
+2. **Schöppingen** (Wohnort des Hörers, inkl. Ortsteil Eggerode) – der wichtigste Teil, so
+   ausführlich, wie die Meldungen es hergeben (ca. 25 %). Jede Schöppinger Meldung aufgreifen,
+   auch kleine (Vereine, Gemeinderat, Menschen, Veranstaltungen, Sport). Westfälische Nachrichten
+   und Radio WMW haben Vorrang, weil sie Kurztexte liefern. Gibt es wenig Neues, ist der Teil
+   eben kurz – nichts dazuerfinden und nichts aus anderen Orten nach Schöppingen verlegen.
+3. **Nachbarorte** (ca. 15 %): Heek mit Nienborg, Asbeck und Legden. Metelen und Horstmar nur
+   kurz und nur, wenn etwas Nennenswertes passiert ist.
+4. **Kreis Borken** (ca. 8 %): nur kreisweite Themen (Kreisverwaltung, Kreistag, Verkehr,
+   Gesundheit, Wirtschaft) und wirklich Herausragendes. KEINE gewöhnlichen Polizeimeldungen aus
+   anderen Städten des Kreises (Bocholt, Gronau, Borken …).
+5. Überleitung „Damit nach Nordrhein-Westfalen.“ – **NRW** (ca. 12 %): 3 bis 5 Themen aus den
+   WDR-Meldungen, Landespolitik zuerst. Bundesliga nur in einem Satz.
+6. Überleitung „Damit nach Deutschland.“ – **Deutschland** (ca. 15 %): 4 bis 6 wichtigste Themen.
+7. Überleitung „Damit nach Europa.“ – **Europa** (ca. 8 %): 2 bis 4 Themen aus EU und den
+   europäischen Ländern (inkl. Ukraine und Russland).
+8. Überleitung „Und ein Blick in die Welt.“ – **Welt** (ca. 10 %): 3 bis 5 Themen außerhalb
+   Europas, am Ende ggf. „Noch einige Meldungen in Kürze“.
+   Jedes Thema nur in EINEM Teil erzählen (z. B. EU-Gipfel unter Europa, nicht unter Welt).
+9. Überleitung „Und zum Schluss das Wetter in Nordrhein-Westfalen.“ – zusammenhängend
    formuliert, keine Liste von Orten: zuerst heute (Wetterlage, Temperaturspanne, Regen, Wind),
    dabei Schöppingen und das Münsterland nennen und auffällige Unterschiede im Land erwähnen
    (z. B. kühler im Sauerland, mehr Regen in Ostwestfalen). Dann kurz morgen. Auf Auffälliges
    hinweisen: Sturmböen ab etwa 60 km/h, Frost, Glätte, Gewitter, Starkregen. Temperaturen als
    ganze Zahlen („zwischen 7 und 14 Grad“), keine Millimeter- oder Prozentkolonnen vorlesen.
    Sind die Wetterdaten nicht erreichbar, den Wetterteil weglassen.
-6. Kurzer Abschluss mit Datum und „bis morgen!“.
+10. Kurzer Abschluss mit Datum und „bis morgen!“.
 
 Regeln:
 - Nur Fakten verwenden, die in `arbeit/lage.md` stehen. Nichts erfinden oder ausschmücken (keine
@@ -55,16 +75,17 @@ Regeln:
   („laut Medienberichten“).
 - Alles in eigenen Worten formulieren, keine Sätze aus den Quellen übernehmen.
 - Fehltreffer aussortieren: andere Orte gleichen Namens (z. B. Gronau bei Bergisch Gladbach oder
-  in Niedersachsen, Oldenburger Münsterland), Transfermarkt-Seiten, Werbung, alte Meldungen,
-  doppelte Meldungen.
+  in Niedersachsen, Oldenburger Münsterland, Heek als Ortsteil anderswo), Meldungen, in denen
+  Schöppingen nur am Rande vorkommt (z. B. Sportberichte über andere Vereine), Werbung,
+  Öffnungszeiten-Listen, doppelte Meldungen.
 - Fürs Vorlesen schreiben: Abkürzungen ausschreiben (B 70 → Bundesstraße 70, Mrd. → Milliarden),
   keine Klammern, keine Sonderzeichen wie „|“ oder „&“, kurze Sätze.
 - Danach einmal gegenlesen: Ist jede Aussage durch `arbeit/lage.md` gedeckt?
   Wortzahl prüfen mit `wc -w arbeit/skript.txt`.
 
 Schreibe außerdem `arbeit/beschreibung.txt`: eine Zeile mit den 3–4 wichtigsten Themen, durch
-Kommas getrennt (z. B. „Schöppingen: neue Rettungswache, Schüsse in Gronau, Tabaksteuer-Panne,
-Ukraine-Gespräche“).
+Kommas getrennt, Schöppingen zuerst (z. B. „Schöppingen: neues Ratsmitglied, Heek:
+Adventuregolf-Pläne, NRW: Gen-Z-Demos, Ukraine-Gespräche“).
 
 ## Schritt 4 – Einreichen
 
