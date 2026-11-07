@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guten Morgen, Münsterland</title>
+    <link>https://thluebit-dev.github.io/nachrichten-podcast/</link>
+    <atom:link href="https://thluebit-dev.github.io/nachrichten-podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Täglich ca. 11 Minuten: Schöppingen, Nachbarorte, Kreis Borken, NRW, Deutschland, Europa, Welt und das Wetter</description>
+    <language>de-de</language>
+    <itunes:author>Privater Nachrichten-Podcast</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:block>Yes</itunes:block>
+    <itunes:category text="News"/>
+    <item>
+      <title>Nachrichten vom Samstag, 7. November 2026</title>
+      <description>Schöppingen: Brictius-Woche startet, Seniorengemeinschaft feiert Jubiläum, NRW: Nadeln in Süßigkeiten teils vorgetäuscht, Deutschland: Aigner als Bundespräsidentin, Welt: Stabschef Miller und Paraguay-Krise</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-07.mp3" length="4036464" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-07</guid>
+      <pubDate>Sat, 07 Nov 2026 05:19:19 GMT</pubDate>
+      <itunes:duration>11:13</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Freitag, 6. November 2026</title>
+      <description>Schöppingen: Brictius-Woche, Heek: 100 Jahre Nikolaus-Tradition, Deutschland: Aiwanger-Tod, Aigner-Kandidatur, NRW: Reichsbürger-Prozess</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-06.mp3" length="3900384" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-06</guid>
+      <pubDate>Fri, 06 Nov 2026 05:19:41 GMT</pubDate>
+      <itunes:duration>10:50</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Donnerstag, 5. November 2026</title>
+      <description>Schöppingen: Blumenklau an der Vechtebrücke, Legden: Chefkoch mit Michelin-Stern, NRW: Steuerloch durch Spritsteuersenkung, Deutschland: Aiwanger gestorben, USA-Midterms</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-05.mp3" length="3694320" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-05</guid>
+      <pubDate>Thu, 05 Nov 2026 05:19:02 GMT</pubDate>
+      <itunes:duration>10:16</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Mittwoch, 4. November 2026</title>
+      <description>Schöppingen: Blumenklau Eggerode, Sekundarschule; Heek: 2G Energy; NRW: Schulgesetz; USA: Demokraten gewinnen Senat</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-04.mp3" length="3656448" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-04</guid>
+      <pubDate>Wed, 04 Nov 2026 05:18:53 GMT</pubDate>
+      <itunes:duration>10:09</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Dienstag, 3. November 2026</title>
+      <description>Schöppingen: Bürgermeister-Bilanz, Nienborg: Pokalspiel, NRW: Warnstreiks, Halloween-Nadeln, US-Zwischenwahlen</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-03.mp3" length="3726864" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-03</guid>
+      <pubDate>Tue, 03 Nov 2026 05:17:54 GMT</pubDate>
+      <itunes:duration>10:21</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Montag, 2. November 2026</title>
+      <description>Schöppingen: Bürgermeister Giesel nach einem Jahr, Urnengräber; Heek und Asbeck: Kunstrasen, Friedhof; NRW: IG-Metall-Warnstreiks, Gen-Z-Krawalle; Spyware-Angriff auf Politiker</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-02.mp3" length="3511152" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-02</guid>
+      <pubDate>Mon, 02 Nov 2026 05:18:58 GMT</pubDate>
+      <itunes:duration>9:45</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Sonntag, 1. November 2026</title>
+      <description>Schöppingen: Allerheiligen-Öffnungszeiten, Großbrand in Gescher, Gen-Z-Proteste mit Ausschreitungen, Streit um Polens Verfassungsgericht</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-01.mp3" length="3642192" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-01</guid>
+      <pubDate>Sun, 01 Nov 2026 05:19:07 GMT</pubDate>
+      <itunes:duration>10:07</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Samstag, 31. Oktober 2026</title>
+      <description>Schöppingen: Allerheiligen und Urnengräber, zwei Tote auf Schulbaustelle in Gronau, Jugendproteste Gen Z regelt, Zugunglück in Spanien</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-31.mp3" length="3844512" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-31</guid>
+      <pubDate>Sat, 31 Oct 2026 05:17:54 GMT</pubDate>
+      <itunes:duration>10:41</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Freitag, 30. Oktober 2026</title>
+      <description>Schöppingen: Einbruch in Lagerhalle und 100. Geburtstag der ersten Schulleiterin, zwei Tote auf Schulbaustelle in Gronau, Zugunglück in Spanien, Steinmeier in China</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-30.mp3" length="3750336" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-30</guid>
+      <pubDate>Fri, 30 Oct 2026 05:19:48 GMT</pubDate>
+      <itunes:duration>10:25</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Donnerstag, 29. Oktober 2026</title>
+      <description>Schöppingen: Einbruch in Lagerhalle und 100. Geburtstag, Gronau: zwei Tote bei Arbeitsunfall, Zugunglück in Spanien, Steinmeier-Nachfolge</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-29.mp3" length="3705696" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-29</guid>
+      <pubDate>Thu, 29 Oct 2026 05:30:00 GMT</pubDate>
+      <itunes:duration>10:18</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Freitag, 23. Oktober 2026</title>
+      <description>Schöppingen: neuer Gemeinderat Feldhaus, Länder fordern Energie-Entlastungen, Erdbeben in Tibet, Kiew erneut angegriffen</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-23.mp3" length="4010544" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-23</guid>
+      <pubDate>Fri, 23 Oct 2026 05:18:10 GMT</pubDate>
+      <itunes:duration>11:08</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Donnerstag, 22. Oktober 2026</title>
+      <description>Schöppingen: Unfall auf Landesstraße, Tabaksteuer-Panne, Ukraine-Gespräche, Meta-Strafe</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-22.mp3" length="3828384" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:18:10 GMT</pubDate>
+      <itunes:duration>10:38</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Mittwoch, 21. Oktober 2026</title>
+      <description>Schöppingen: Kneipennacht, Schüsse in Gronau, Tabaksteuer-Panne, Ukraine-Gespräche in Sankt Petersburg</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-10-21.mp3" length="3700224" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-10-21</guid>
+      <pubDate>Wed, 21 Oct 2026 05:30:00 GMT</pubDate>
+      <itunes:duration>10:17</itunes:duration>
+    </item>
+  </channel>
+</rss>
