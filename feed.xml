@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guten Morgen, Münsterland</title>
+    <link>https://thluebit-dev.github.io/nachrichten-podcast/</link>
+    <atom:link href="https://thluebit-dev.github.io/nachrichten-podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Täglich ca. 11 Minuten: Schöppingen, Nachbarorte, Kreis Borken, NRW, Deutschland, Europa, Welt und das Wetter</description>
+    <language>de-de</language>
+    <itunes:author>Privater Nachrichten-Podcast</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:block>Yes</itunes:block>
+    <itunes:category text="News"/>
+    <item>
+      <title>Nachrichten vom Samstag, 28. November 2026</title>
+      <description>Schöppingen: Spirituosen-Lobbyist in Berlin und Nikolaus-Besuch aus Australien, Heek: Agravis-Projekt gescheitert, Rentenentwurf von Minister Schweitzer, gescheiterter EU-Haushaltsgipfel</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-28.mp3" length="4412160" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 05:17:52 GMT</pubDate>
+      <itunes:duration>12:15</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Freitag, 27. November 2026</title>
+      <description>Schöppingen: neue Rettungswache, Legden: Friedensbaum und Ortsmitte, NRW: Lobbyregister, Deutschland: Rekord-Schmerzensgeld Erzbistum Köln, EU-Gipfel ohne Einigung</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-27.mp3" length="4246128" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-27</guid>
+      <pubDate>Fri, 27 Nov 2026 05:18:56 GMT</pubDate>
+      <itunes:duration>11:48</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Donnerstag, 26. November 2026</title>
+      <description>Schöppingen: Fahrradstraße und Tempo 70 auf dem Prüfstand, Heek: kein Winterdienst, NRW: Gesichtsschleier-Verbot an Schulen, EU-Haushaltsgipfel und neue US-Zölle</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-26.mp3" length="4247856" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-26</guid>
+      <pubDate>Thu, 26 Nov 2026 05:18:42 GMT</pubDate>
+      <itunes:duration>11:48</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Mittwoch, 25. November 2026</title>
+      <description>Schöppingen: weißer Strich für Radler, Heek: B54-Sanierung verschoben, NRW: Kita-Klage, Deutschland: Haushaltsdebatte, Abschiebeflug</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-25.mp3" length="4186080" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-25</guid>
+      <pubDate>Wed, 25 Nov 2026 05:17:45 GMT</pubDate>
+      <itunes:duration>11:38</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Dienstag, 24. November 2026</title>
+      <description>Schöppingen: Tempo 70 auf der Umgehungsstraße, Heek: Gewerbeflächen und kein Winterdienst, NRW: Angriff in Schwerte, Deutschland: Haushaltsdebatte und Rentenstreit</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-24.mp3" length="4477968" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-24</guid>
+      <pubDate>Tue, 24 Nov 2026 05:17:35 GMT</pubDate>
+      <itunes:duration>12:26</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Montag, 23. November 2026</title>
+      <description>Schöppingen: keine neuen Meldungen, NRW: AfD-Wahlprogramm, Femizide als Mord, Bayern: Aiwanger gestorben, Europa: Klimakonferenz gescheitert</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-23.mp3" length="4083696" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-23</guid>
+      <pubDate>Mon, 23 Nov 2026 05:17:28 GMT</pubDate>
+      <itunes:duration>11:21</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Sonntag, 22. November 2026</title>
+      <description>Schöppingen: Ex-Schöppinger FDP-Ratsherr in Lastrup, Heek: Kunstrasen-Spenden, NRW: AfD-Parteitag in Mülheim, Klimakonferenz in Antalya</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-22.mp3" length="4209408" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-22</guid>
+      <pubDate>Sun, 22 Nov 2026 05:17:54 GMT</pubDate>
+      <itunes:duration>11:42</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Samstag, 21. November 2026</title>
+      <description>Schöppingen: Seniorengemeinschaft feiert 55 Jahre, Heek: Urteil gegen Waffenhändler, NRW: Gen-Z-Demos, Welt: Klimakonferenz in Antalya</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-21.mp3" length="4481136" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-21</guid>
+      <pubDate>Sat, 21 Nov 2026 05:18:08 GMT</pubDate>
+      <itunes:duration>12:27</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Freitag, 20. November 2026</title>
+      <description>Schöppingen: Heimatpreis und Kritik der UWG, Heek: tödlicher Unfall in Nienborg und Schafbock-Krimi, Deutschland: Jugendproteste und Merz zu Russland-Gesprächen, Welt: Völkermord-Urteil zu Myanmar</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-20.mp3" length="4375872" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-20</guid>
+      <pubDate>Fri, 20 Nov 2026 05:17:40 GMT</pubDate>
+      <itunes:duration>12:09</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Donnerstag, 19. November 2026</title>
+      <description>Schöppingen: Abwasserleitung Eggeroder Straße, Heek: Streit um Straßenausbau-Beiträge, Deutschland: Stromsteuersenkung, BSW-Beschwerde abgelehnt, Ukraine-Gipfel in Berlin</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-19.mp3" length="4381344" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-19</guid>
+      <pubDate>Thu, 19 Nov 2026 05:18:46 GMT</pubDate>
+      <itunes:duration>12:10</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Mittwoch, 18. November 2026</title>
+      <description>Schöppingen: Brictiusschule-Neubau günstiger, Nienborg: Unfallflucht, Deutschland: Koalitionsausschuss zur Stromsteuer, Europa: Krim-Brücke schwer beschädigt</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-18.mp3" length="4693968" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-18</guid>
+      <pubDate>Wed, 18 Nov 2026 05:17:39 GMT</pubDate>
+      <itunes:duration>13:02</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Dienstag, 17. November 2026</title>
+      <description>Schöppingen: Überfall auf Ehepaar, Betrug am Telefon, Nienborg: Unfallflucht, NRW: Hells-Angels-Verbot, Deutschland: Koalitionsausschuss zur Stromsteuer, Ruanda-Abschiebezentrum</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-17.mp3" length="4170096" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-17</guid>
+      <pubDate>Tue, 17 Nov 2026 05:17:58 GMT</pubDate>
+      <itunes:duration>11:35</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Montag, 16. November 2026</title>
+      <description>Schöppingen: ASC-Sieg in Gronau, Heek: Azubi-Campus auf Eis, NRW: A44-Lückenschluss, SPD-Vorsitz: Heil, Estland schließt Grenze</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-16.mp3" length="4382784" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-16</guid>
+      <pubDate>Mon, 16 Nov 2026 05:17:42 GMT</pubDate>
+      <itunes:duration>12:10</itunes:duration>
+    </item>
+    <item>
+      <title>Nachrichten vom Sonntag, 15. November 2026</title>
+      <description>Schöppingen: Helene Wenking wird 100, Heek: Briefe eines gefallenen Priesters, Deutschland: Heil will SPD-Vorsitz, Welt: US-Flugstopp, SpaceX</description>
+      <enclosure url="https://thluebit-dev.github.io/nachrichten-podcast/folgen/2026-11-15.mp3" length="4529088" type="audio/mpeg"/>
+      <guid isPermaLink="false">nachrichten-2026-11-15</guid>
+      <pubDate>Sun, 15 Nov 2026 05:17:52 GMT</pubDate>
+      <itunes:duration>12:35</itunes:duration>
+    </item>
+  </channel>
+</rss>
